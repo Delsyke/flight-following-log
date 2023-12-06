@@ -1,2 +1,5 @@
 departure_times.txt
 au_codes.json
+__pycache__/
+~*
+FF LOG*

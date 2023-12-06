@@ -10,23 +10,26 @@ def get_route(stops):
 
     return legs #list with tuples of all sectors for a given routing
 
-get_route('WIL OLX OSJ KTJ WIL')
-
 
 def take_routes():
     routes = []
     etd_times = []
+##    new_aircraft = []
 
     with open('routings.txt') as f:
         lines = f.readlines()
 
-
     for line in lines:
         line = line.strip()
-        etd = line[0:5]
-        etd_times.append(etd)
-        route = line[6:]
-        routes.append(route)
+
+        try:
+            etd = line[0:5]
+            route = line[6:]
+        except IndexError:
+            pass
+        finally:
+            etd_times.append(etd)
+            routes.append(route)
 
     with open('departure_times.txt', 'w') as f:
         for etd in etd_times:
