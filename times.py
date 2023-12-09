@@ -2,7 +2,7 @@ import json
 import datetime
 
 
-def calculate_times(dep, dest):
+def get_c208_eet(dep, dest):
     with open('timings.json') as f:
         timings = json.load(f)
 
@@ -10,7 +10,19 @@ def calculate_times(dep, dest):
         eet = timings["C208"][dep.upper()][dest.upper()]
     except KeyError:
         eet = timings["C208"][dest.upper()][dep.upper()]
+    
+    return eet
 
+
+def get_dhc8_eet(dep, dest):
+    with open('dhc8 timings.json') as f:
+        timings = json.load(f)
+
+    try:
+        eet = timings["DHC8"][dep.upper()][dest.upper()]
+    except KeyError:
+        eet = timings["DHC8"][dest.upper()][dep.upper()]
+    
     return eet
 
 
@@ -26,5 +38,10 @@ def get_eta(departure_time, eet):
         eta = departure_time + trip_time
 
     return eta
-##    return f'{eta.hour}:{eta.minute}'
 
+
+
+# print(get_dhc8_eet('HKNW', 'Htkj'))
+# print(get_c208_eet('HKNW', 'Htkj'))
+# print(get_eta('10:10', get_dhc8_eet('HKNW', 'Htkj')))
+# print(get_eta('10:10', get_c208_eet('HKNW', 'Htkj')))

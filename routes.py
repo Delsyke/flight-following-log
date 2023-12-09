@@ -12,9 +12,9 @@ def get_route(stops):
 
 
 def take_routes():
-    routes = []
+    c208_routes = []
     etd_times = []
-##    new_aircraft = []
+    dhc8_routes = []
 
     with open('routings.txt') as f:
         lines = f.readlines()
@@ -22,21 +22,55 @@ def take_routes():
     for line in lines:
         line = line.strip()
 
-        try:
-            etd = line[0:5]
-            route = line[6:]
-        except IndexError:
-            pass
-        finally:
-            etd_times.append(etd)
-            routes.append(route)
+        if len(line) != 0 and line[2] == ':':
+            try:
+                etd = line[0:5]
+                route = line[6:]
+            except IndexError:
+                pass
+            finally:
+                etd_times.append(etd)
+                c208_routes.append(route)
+
+        elif len(line) != 0 and line[2] != ':':
+            try:
+                au_code = line[0:3]
+                route = line[4:]
+            except IndexError:
+                pass
+            finally:
+                dhc8_routes.append((au_code, route))
+
 
     with open('departure_times.txt', 'w') as f:
         for etd in etd_times:
             f.write(f' {etd}')
 
-    return (routes) #list of strings of all routes from routings.txt
+    with open('dhc8_times.txt', 'w') as f:
+        for dhc8_route in dhc8_routes:
+            f.write(f'{dhc8_route[0]}-{dhc8_route[1]}\n')
+
+    return c208_routes #list of strings of all routes from routings.txt
 
 
-##get_route()
-##print(take_routes())
+# def take_dash_route():
+#     routes = []
+#     etd_times = []
+
+#     with open('routings.txt') as f:
+#         lines = f.readlines()
+
+#     for line in lines:
+#         line = line.strip()
+
+
+
+
+
+
+
+# x = get_route('WIL LEW LSB WIL')
+# print(x)
+
+# y = take_routes()
+# print(y[1])

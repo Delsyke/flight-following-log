@@ -1,0 +1,63 @@
+{
+  "051": 
+        {
+          "HKNW HKLU HKML HKNW":"11:15 12:55 13:45",
+          "HKNW HKML HKLU HKNW":"11:15 12:45 13:35"
+        },
+  "053":
+        {
+          "HKNW HKUK HKNW":"06:45 08:25"
+        },
+  "055":
+        {
+          "HKNW HKUK HKNW":"11:00 12:45"
+        },
+  "057":
+        {
+          "HKNW HKUK HKNW":"12:45 14:30"
+        },
+  "049":
+        {
+          "HKNW HKML HKLU HKNW":"04:00 05:35 06:20",
+          "HKNW HKLU HKMO HKNW":"03:45 05:25 07:00",
+          "HKNW HKLU HKML HKNW":"03:45 05:25 06:30"
+        },
+  "043":
+        {
+          "HKNW HKMO HKNW":"03:45 05:45",
+          "HKNW HKMO HTZA HKMO HTZA": "03:45 05:45 07:15 09:00"
+        },
+  "045":
+        {
+          "HKNW HKMO HKNW":"11:00 12:45",
+          "HKNW HKMO HTZA HKMO HKNW": "11:00 13:10 14:15 16:10"
+        },
+  "047":
+        {
+          "HKNW HTZA HKMO HKNW":"11:00 12:40 13:40"
+        },
+  "061":
+        {
+          "HKNW HKMO HKNW":"03:45 05:45"
+        },
+  "063":
+        {
+          "HKNW HKMO HKNW":"11:00 12:45"
+        },
+  "065":
+        {
+          "HKNW HKMO HKNW":"11:45 13:45"
+        },
+  "081":
+        {
+          "HKNW HKKI HKNW":"04:00 05:10"
+        },
+  "085":
+        {
+          "HKNW HKKI HKNW":"08:00 09:10"
+        },
+  "089":
+        {
+          "HKNW HKKI HKNW":"15:00 16:10"
+        }
+}

@@ -1,5 +1,8 @@
 departure_times.txt
-au_codes.json
 __pycache__/
+routings.txt
+from_to.py
+au_codes.json
+FF*
 ~*
-FF LOG*
+dhc8_times.txt
