@@ -36,7 +36,7 @@ def c208_writer(c208_routes, c208_departure_times, worksheet, row_num):
 
             worksheet['I'+row].value = f'{eta_hr_str}:{eta_min_str}'
 
-            ground_time = timedelta(minutes=10)
+            ground_time = timedelta(minutes=15)
             departure_time = eta + ground_time
 
             dep_time_hr_str = str(departure_time.hour)
