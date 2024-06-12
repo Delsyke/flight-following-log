@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Help</title>
+    <link href="styles.css" rel="stylesheet"/>
+
+    <style type="text/css">
+        table {
+            align-self: center;
+        }
+        th, td {
+            border: 1px solid black;
+/*            border-collapse: collapse;*/
+            text-align: center;
+            border-color: darkcyan;
+        }
+
+        nav {
+            background-color: grey;
+            color: darkcyan;
+            padding: 10px;
+            font-size: 25px;
+        }
+
+        a:visited a:active a:hover {
+            color: darkcyan;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <nav>
+            <a href="#edit">Edit Routings</a>
+            <a href="#errors">Errors</a>
+            <a href="#dhc8">Long Routes</a>
+        </nav>
+
+        <h1>How to Use</h1>
+        <p>This is a simple program to help us generate the flight following log routes. Steps to use</p>
+        <section>
+            <h2>Overview</h2>
+            <ol>
+                <li>Edit and save the file named routings. See below for details on how to edit this file</li>
+                <li>Open console launcher by double clicking</li>
+                <li>Type <i>python app.py</i> on the console screen and hit Enter</li>
+                <li>You are successful if you see <i>Log generated</i> on the console without any other information</li>
+                <li>Check on this directory and find the excel file named by the date generated</li>
+                <li>Open the file and copy the information as desired</li>
+            </ol>
+        </section>
+        <section>
+            <h2 id="edit">Editing Routings</h2>
+            <p>For C208 routes start a new line with the syntax shown in the examples below.</p>
+            <div>
+                <code>04:15 HKNW HKAM HKFH HKNW</code><br><br>
+                <code>07:20 HKNW HKNL HKAK HKLD HKNW</code>
+            </div>
+
+            <p>Use the applicable ICAO code whenever available as shown above, 
+                or the name of the airstrip where the ICAO code is not available.</p>
+            <div>
+                <code>05:00 HKNW KALAMA OLARE HKJK</code><br><br>
+            </div>
+            
+            <p>For Oldonyo Wuas, use OLDO</p>
+            <div>
+                <code>11:00 HKNW OLDO KIMANA HKJK</code><br><br>
+            </div>
+
+            <p>Multiple aircraft: use an empty line to separate the routings of each aircraft as shown</p>
+            <div>
+                <code>04:15 HKNW HKAM OLDO HKNW</code><br>
+                <code>07:20 HKNW HKLD HKSE HKNW</code><br>
+                <code>11:15 HKNW HKMS HKOK HKNW</code><br><br>
+
+                <code>05:00 HKNW HKAK HKLD HKMF HKMS HKKE HKNW</code><br>
+                <code>10:10 HKNW HTKJ HKNW</code><br><br>
+
+                <code>07:00 HKNW HKOD HKOY HKCC HKNW</code>
+            </div>
+
+            <p>Daystop: Enter the route upto the day stop point. Start the afternoon routing on a new line</p>
+            <div>
+                <code>07:00 HKNW HKGE HKSJ HKMJ HKTB</code><br>
+                <code>12:15 HKTB HKOY HKKE HKNW</code>
+            </div>
+
+            <p>For DHC8 routes, with exception of the bush flights, use the following syntax</p>
+            <div>
+                <code>043 HKNW HKMO HTZA HKMO HKNW</code><br>
+                <code>051 HKNW HKLU HKML HKNW</code><br><br>
+
+                <code>081 HKNW HKKI HKNW</code><br>
+                <code>053 HKNW HKUK HKNW</code><br>
+                <code>047 HKNW HTZA HKMO HKNW</code><br>
+            </div>
+
+            <p>For DHC8 aircraft in bush flights, either fill the log manually or follow the C208 syntax and edit the timings</p>
+        </section>
+        <section>
+            <h2 id="errors">Errors</h2>
+            <p>Occasionally, you will get errors displayed on the console. Some of the error causes maybe:</p>
+            <ul>
+                <li>Incorrect entry of an airfield. For example HMO instead of HKMO</li>
+                <li>Incorrect formatting of a route. For example <code>0500 HKNW HKSE HKKE HKNW</code>. 
+                    This will be interpreted like a DHC8 route with an AU code of 050</li>
+                <li>Formatting a DHC8 route with the syntax of a C208 route. For example <code>06:45 HKNW HKUK HKNW</code></li>
+                <li>Formatting a C208 route with the syntax of a DHC8 route. For example <code>023 HKNW HKSB HKNW</code></li>
+                <li>A new airfield that is still not recognized by the program. In this case, inform Wasike for actioning</li>
+            </ul>
+            
+            <p>In any case, the program will not execute the route with an error. 
+                However the other routes will still be executed and you will see the Log generated message. 
+                You will also see info on the error and advise that you can correct or complete that section manually. 
+                See examples below</p>
+            
+            <figure>
+                <img src="README/error1.png" alt="error1">
+                <figcaption>HTZA in C208 route</figcaption>
+            </figure>
+
+            <figure>
+                <img src="README/error2.png" alt="error2">
+                <figcaption>HMO instead of HKMO</figcaption>
+            </figure>
+            
+            <figure>
+                <img src="README/error3.png" alt="error3">
+                <figcaption>Incorrect formatting of a route. <code>0500 HKNW HKSE HKKE HKNW</code></figcaption>
+            </figure>
+        </section>
+
+        <section>
+            <h2>Airfields to Note:</h2>
+            <ul>
+                <li>Rusinga - RUSINGA</li>
+                <li>Segera - HKHZ</li>
+                <li>Namunyak - NAMUNYAK</li>
+                <li>Tawi - HKTQ</li>
+                <li>Oserian - HKOV</li>
+                <li>Kimana - KIMANA</li>
+                <li>Lentile - LENTILE</li>
+                <li>Solio - HKSL</li>
+                <li>El Karama - HKEK</li>
+                <li>Naishi - NAISHI</li>
+                <li>Sosian - SOSIAN</li>
+                <li>Borana - HKBK</li>
+                <li>Isiolo - HKIS</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Airfields to be added later:</h2>
+            <ul>
+                <li>Olmalo</li>
+                <li>Oryx</li>
+                <li>Oljogi</li>
+                <li>Mugie</li>
+                <li>HKRY(Marinyin)</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2 id="dhc8">Tracking the DHC8 on Long Routes</h2>
+            <p>To prove that we are tracking flights after every 15 minutes, we need to insert additional rows for checks after every 15 minutes interval. We start the first check 15 mins after ATD, and then after 15 minutes until the aircraft lands at the destination.</p>
+
+            <p>The number of rows to be inserted depends on the length of the flight, and therefore, the number of checks required. But the following information will be useful. Ref table and examples below</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <td>Leg</td>
+                        <td>Flight Time</td>
+                        <td># of Checks</td>
+                        <td>Rows to Insert</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>WIL-KIS</td>
+                        <td>45 mins</td>
+                        <td>2</td>
+                        <td>1</td>
+                    </tr>
+                    <tr>
+                        <td>WIL-UKA</td>
+                        <td>1hr 10 mins</td>
+                        <td>4</td>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <td>WIL-MBA</td>
+                        <td>1hr 10 mins</td>
+                        <td>4</td>
+                        <td>3</td>
+                    </tr>
+
+                    <tr>
+                        <td>WIL-MYD</td>
+                        <td>1hr 10 mins</td>
+                        <td>4</td>
+                        <td>3</td>
+                    </tr>
+                    <tr>
+                        <td>WIL-LAU</td>
+                        <td>1hr 20 mins</td>
+                        <td>5</td>
+                        <td>4</td>
+                    </tr>
+                    <tr>
+                        <td>LAU-MYD</td>
+                        <td>30 mins</td>
+                        <td>1</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <td>WIL-ZNZ</td>
+                        <td>1hr 40 mins</td>
+                        <td>6</td>
+                        <td>5</td>
+                    </tr>
+                    <tr>
+                        <td>MBA-ZNZ</td>
+                        <td>45 mins</td>
+                        <td>2</td>
+                        <td>1</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <figure>
+                <img src="README/81 53 51.png">
+                <figcaption>
+                    An example showing three flights for SLC. Note that WIL-KIS-WIL has an extra line inserted in each leg because we need two checks on each leg, the first of which is on the first line of that leg. <br>WIL-UKA-WIL has three lines inserted because we need four checks. <br>WIL-LAU has 4 lines for 5 checks. LAU-MYD does not need any extra line because we do a single check. Lastly, MYD-WIL has three lines because of four checks. <br>In each of the flights, the aircraft lands (ATA) before there is time for another check.
+                </figcaption>
+            </figure>
+
+
+
+        </section>
+
+        <footer>
+            <p>Wasike&trade;</p>
+        </footer>
+    </div>
+</body>
+
+</html>
