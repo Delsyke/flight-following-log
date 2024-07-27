@@ -34,7 +34,8 @@
         },
   "047":
         {
-          "HKNW HTZA HKMO HKNW":"11:00 13:00 14:40"
+          "HKNW HTZA HKMO HKNW":"11:00 13:00 14:40",
+          "HKNW HTZA HKNW":"11:00 13:00"
         },
   "061":
         {
@@ -48,6 +49,9 @@
         {
           "HKNW HKMO HKNW":"11:45 13:45"
         },
+  "067":{
+          "HKNW HKMO HKNW":"15:30 17:10"
+  },
   "081":
         {
           "HKNW HKKI HKNW":"04:00 05:10"
