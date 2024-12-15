@@ -61,8 +61,8 @@ def get_eta(departure_time, eet):
 
 
 
-if __name__ == '__main__':
-    print(get_dhc8_eet('HKNW', 'Htkj'))
-    print(get_c208_eet('HKNW', 'Htkj'))
-    print(get_eta('10:10', get_dhc8_eet('HKNW', 'Htkj')))
-    print(get_eta('10:10', get_c208_eet('HKNW', 'Htkj')))
+# if __name__ == '__main__':
+#     print(get_dhc8_eet('HKNW', 'Htkj'))
+#     print(get_c208_eet('HKNW', 'Htkj'))
+#     print(get_eta('10:10', get_dhc8_eet('HKNW', 'Htkj')))
+#     print(get_eta('10:10', get_c208_eet('HKNW', 'Htkj')))

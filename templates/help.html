@@ -1,45 +1,7 @@
-<!DOCTYPE html>
-<html>
+{% extends 'base.html' %}
 
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Help</title>
-    <link href="styles.css" rel="stylesheet"/>
-
-    <style type="text/css">
-        table {
-            align-self: center;
-        }
-        th, td {
-            border: 1px solid black;
-/*            border-collapse: collapse;*/
-            text-align: center;
-            border-color: darkcyan;
-        }
-
-        nav {
-            background-color: grey;
-            color: darkcyan;
-            padding: 10px;
-            font-size: 25px;
-        }
-
-        a:visited a:active a:hover {
-            color: darkcyan;
-            text-decoration: none;
-        }
-    </style>
-</head>
-
-<body>
+{% block content %}
     <div>
-        <nav>
-            <a href="#edit">Edit Routings</a>
-            <a href="#errors">Errors</a>
-            <a href="#dhc8">Long Routes</a>
-        </nav>
-
         <h1>How to Use</h1>
         <p>This is a simple program to help us generate the flight following log routes. Steps to use</p>
         <section>
@@ -120,17 +82,17 @@
                 See examples below</p>
             
             <figure>
-                <img src="HELP/error1.png" alt="error1">
+                <img src="{{ url_for('static', filename='HELP/error1.png') }}" alt="error1">
                 <figcaption>HTZA in C208 route</figcaption>
             </figure>
 
             <figure>
-                <img src="HELP/error2.png" alt="error2">
+                <img src="{{ url_for('static', filename='HELP/error2.png') }}" alt="error2">
                 <figcaption>HMO instead of HKMO</figcaption>
             </figure>
             
             <figure>
-                <img src="HELP/error3.png" alt="error3">
+                <img src="{{ url_for('static', filename='HELP/error3.png') }}" alt="error3">
                 <figcaption>Incorrect formatting of a route. <code>0500 HKNW HKSE HKKE HKNW</code></figcaption>
             </figure>
         </section>
@@ -234,20 +196,11 @@
             </table>
 
             <figure>
-                <img src="HELP/81 53 51.png">
+                <img src="{{ url_for('static', filename='HELP/81 53 51.png') }}" alt="How to insert lines for checks">
                 <figcaption>
                     An example showing three flights for SLC. Note that WIL-KIS-WIL has an extra line inserted in each leg because we need two checks on each leg, the first of which is on the first line of that leg. <br>WIL-UKA-WIL has three lines inserted because we need four checks. <br>WIL-LAU has 4 lines for 5 checks. LAU-MYD does not need any extra line because we do a single check. Lastly, MYD-WIL has three lines because of four checks. <br>In each of the flights, the aircraft lands (ATA) before there is time for another check.
                 </figcaption>
             </figure>
-
-
-
         </section>
-
-        <footer>
-            <p>Wasike&trade;</p>
-        </footer>
     </div>
-</body>
-
-</html>
+{% endblock content %}

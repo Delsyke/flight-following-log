@@ -59,14 +59,14 @@ def write_to_excel(schedule, worksheet, row_num):
 				if len(dep_time_min_str) == 1:
 					dep_time_min_str = '0' + dep_time_min_str
 
+				worksheet['H'+str(i+1)].value = f'{dep_time_hr_str}:{dep_time_min_str}'
 				i+=1
-				worksheet['H'+str(i)].value = f'{dep_time_hr_str}:{dep_time_min_str}'
 				r+=1
 
 			worksheet['H'+str(i)].value = ''
                 
-			i+=1
-			t+=1
+			# i+=1
+			# t+=1
 
 
 		#DHC8 case
@@ -126,3 +126,4 @@ def write_to_excel(schedule, worksheet, row_num):
 		#Line skip to separate aircraft schedules
 		else:
 			i+=1
+			print('Line skip to separate aircraft schedules')

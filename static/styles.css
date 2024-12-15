@@ -1,0 +1,44 @@
+.container {
+	max-width: 900px;
+	margin: 0 auto;
+}
+
+table {
+	align-self: center;
+}
+
+th, td {
+	border: 1px solid black;
+/*	border-collapse: collapse;*/
+	text-align: center;
+	border-color: darkcyan;
+}
+
+nav {
+	padding: 10px;
+	text-align: center;
+	font-size: 1.5em;
+}
+
+nav a {
+	text-decoration: none;
+	color: darkcyan;
+}
+
+
+.text-box {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.btn {
+	text-align: center;
+	padding: 10px;
+	font-size: 1.2em;
+}
+
+textarea {
+	font-size: 25px;
+}
+

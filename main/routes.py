@@ -17,6 +17,7 @@ def read_routes():
 
     with open('routings.txt') as f:
         lines = f.readlines()
+        # print('lines is:', lines)
 
     for line in lines:
         if line:
@@ -32,9 +33,12 @@ def read_routes():
                 schedule.append((au_code, route))
 
             else:
-                schedule.append(('SKIP THIS LINE'+str(j),))
                 j+=1
-
+                schedule.append(('SKIP THIS LINE'+str(j),))   
+                
+    # print('schedule is :', schedule)
     return schedule # a list of tuples each containing either the etd/au_code (for c208 or dhc8 respectively) and the corresponding route
 
 
+if __name__ == '__main__':
+    read_routes()
