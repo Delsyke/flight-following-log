@@ -3,12 +3,21 @@ from datetime import datetime, timedelta, date
 from .times import get_c208_eet, get_eta, get_dhc8_eet
 import json
 import logging
+from flask import abort
 
 
+logging.basicConfig(format='%(message)s')
 
 def write_to_excel(schedule, worksheet, row_num):
-
-	with open('main/dhc8 routings.json') as f:
+	"""
+	Writes information to the excel file as per the required format
+	schedule is the user input to be written to the excel
+	worksheet is the specific worksheet in the excel we want to write
+	row_num is the row within the worksheet from which we start to write the schedule
+	"""
+	
+	#to read dhc8 routes and their scheduled timings for all services
+	with open('main/dhc8 routings.json') as f: 
 		dhc8_schedule = json.load(f)
 
 	i = row_num
@@ -16,22 +25,25 @@ def write_to_excel(schedule, worksheet, row_num):
 
 	for flight in schedule:
 		k = flight[0] 			#either au_code for the case of DHC8 of departure time for the case of C208
-		route = flight[-1]		#the complete route associated with k
+		route = flight[-1]		#the complete flight associated with k
 
 		#C208 case
 		if len(k) == 5:
-			r=0
-			legs = get_route(route)
-			departure_time = k
+			r=0 #index to locate legs later
+			legs = get_route(route) #list of legs for the complete flight
+			departure_time = k 		#departure time for the first leg
 			worksheet['H'+str(i)].value = departure_time
 
+			#workout the eta for the first landing
+			#apply a 15 minute ground time and get new etd for next leg
+			#write in the excel in appropriate cells
 			for _ in range(len(legs)):
 				row = str(i)
-				dep, dest = legs[r][0], legs[r][1]
-				eet = get_c208_eet(dep,dest)
+				dep, dest = legs[r][0], legs[r][1] #departure and destination stations
+				eet = get_c208_eet(dep,dest) #how long to fly each leg
 				
 				try:
-					eta = get_eta(departure_time, eet)
+					eta = get_eta(departure_time, eet) #get eta 
 				except:
 					break
 
@@ -49,7 +61,7 @@ def write_to_excel(schedule, worksheet, row_num):
 				worksheet['I'+row].value = f'{eta_hr_str}:{eta_min_str}'
 
 				ground_time = timedelta(minutes=15)
-				departure_time = eta + ground_time
+				departure_time = eta + ground_time #etd for next leg
 
 				dep_time_hr_str = str(departure_time.hour)
 				dep_time_min_str = str(departure_time.minute)
@@ -60,18 +72,20 @@ def write_to_excel(schedule, worksheet, row_num):
 					dep_time_min_str = '0' + dep_time_min_str
 
 				worksheet['H'+str(i+1)].value = f'{dep_time_hr_str}:{dep_time_min_str}'
-				i+=1
-				r+=1
+				i+=1 #next row
+				r+=1 #next leg
 
-			worksheet['H'+str(i)].value = ''
+			# skip row to separate flights
+			worksheet['H'+str(i)].value = '' 
                 
-			# i+=1
-			# t+=1
+			i+=1 #row for the next new flight
+			t+=1 #not used for the c208 case but updated incase next aircraft is a dhc8
 
 
-		#DHC8 case
+		#DHC8 case similar logic to c208 but
+		#fixed schedule used as per flight codes rather than dynamic schedule
 		elif len(k) == 3:
-			r=0
+			r=0 #index to locate legs later
 			t=0
 			legs = get_route(route)
 			try:
@@ -81,6 +95,7 @@ def write_to_excel(schedule, worksheet, row_num):
 				ATTENTION:
 				Unknown DHC8 route {k} {route}. Schedule not completed. 
 				Please correct or complete this section manually."""
+				abort(400, msg)
 				logging.error(msg)
 				break
 			worksheet['H'+str(i)].value = f'{departure_time}'
@@ -126,4 +141,4 @@ def write_to_excel(schedule, worksheet, row_num):
 		#Line skip to separate aircraft schedules
 		else:
 			i+=1
-			print('Line skip to separate aircraft schedules')
+			# print('Line skip to separate aircraft schedules')

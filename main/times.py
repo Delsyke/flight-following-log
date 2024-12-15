@@ -1,11 +1,15 @@
 import json
 import datetime
 import logging
+from flask import abort
+
 
 logging.basicConfig(format='%(message)s')
 
 
 def get_c208_eet(dep, dest):
+    """reads a json formatted time a c208 takes to fly between stations"""
+    
     with open('main/timings.json') as f:
         timings = json.load(f)
 
@@ -22,9 +26,12 @@ def get_c208_eet(dep, dest):
             Unknown C208 route {dep.upper()} - {dest.upper()}. Schedule not completed. 
             Please correct or complete this section manually.
             '''
+            abort(400, msg)
             logging.error(msg)
 
 def get_dhc8_eet(dep, dest):
+    """reads a json formatted time a dhc8 takes to fly between stations"""
+
     with open('main/dhc8 timings.json') as f:
         timings = json.load(f)
 
@@ -41,10 +48,17 @@ def get_dhc8_eet(dep, dest):
             Unknown DHC8 route {dep.upper()} - {dest.upper()}. Schedule not completed. 
             Please correct complete this section manually.
             '''
+            abort(400, msg)
             logging.error(msg)
 
 
 def get_eta(departure_time, eet):
+    """
+    calculates the eta for the next station given 
+    a departure time from another station and the
+    flight time between the stations
+    """
+    
     hr, mnt = eet.split(':')
     trip_time = datetime.timedelta(hours=int(hr), minutes=int(mnt))
 
