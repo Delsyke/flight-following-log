@@ -5,10 +5,12 @@ from datetime import date
 from openpyxl import load_workbook
 from main.routes import read_routes
 from main.mywriter import write_to_excel
-
+import secrets
 
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = secrets.token_hex()
+
 
 with app.app_context():
 	downloads_path = os.path.join(current_app.root_path, 'downloads')
@@ -55,3 +57,7 @@ def generate_routings():
 @app.get('/help')
 def help():
 	return render_template('help.html')
+
+
+if __name__ == '__main__':
+	app.run()
