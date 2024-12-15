@@ -2,7 +2,11 @@
   "051": 
         {
           "HKNW HKLU HKML HKNW":"11:15 12:55 13:45",
-          "HKNW HKML HKLU HKNW":"11:15 12:45 13:35"
+          "HKNW HKML HKLU HKNW":"11:15 12:45 13:35",
+          "HKNW HKML HKLU HKML HKNW":"11:00 12:45 13:45 15:00",
+          "HKNW HKLU HKML HKLU HKNW":"11:00 12:55 13:45 14:45",
+          "HKNW HKML HKNW":"11:00 12:45",
+          "HKNW HKLU HKNW":"11:00 12:45"
         },
   "053":
         {
