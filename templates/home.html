@@ -1,10 +1,8 @@
 {% extends 'base.html' %}
 
 {% block content %}
-	<div class="text-box">
-		<form method="post" action="/">
-			<textarea name="routes" value="" rows="25" cols="80" placeholder="Enter your routes here"></textarea><br>
-			<input type="submit" name="submit" value="Generate" class="btn">
-		</form>
-	</div>
+	<form method="post" action="/" class="form form-control form-control-lg">
+		<textarea name="routes" value="" rows="25" cols="130" placeholder="Enter your routes here"></textarea><br>
+		<input type="submit" name="submit" value="Generate" class="btn btn-secondary btn-outline">
+	</form>
 {% endblock content %}
