@@ -40,7 +40,7 @@ def download(filename):
 
 @app.get('/')
 def home():
-	return render_template('home.html')
+	return render_template('home.html', title='Routings')
 
 
 @app.post('/')
@@ -56,7 +56,7 @@ def generate_routings():
 
 @app.get('/help')
 def help():
-	return render_template('help.html')
+	return render_template('help.html', title='Help')
 
 
 @app.errorhandler(400)
