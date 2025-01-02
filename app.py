@@ -59,5 +59,11 @@ def help():
 	return render_template('help.html')
 
 
+@app.errorhandler(400)
+def bad_request(msg):
+    return render_template('400.html', msg=msg)
+
+
+
 if __name__ == '__main__':
 	app.run()

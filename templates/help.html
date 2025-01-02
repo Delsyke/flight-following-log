@@ -15,48 +15,48 @@
         <section>
             <h2 id="edit">Editing Routings</h2>
             <p>For C208 routes start a new line with the syntax shown in the examples below.</p>
-            <div>
+            <div class="example">
                 <code>04:15 HKNW HKAM HKFH HKNW</code><br><br>
                 <code>07:20 HKNW HKNL HKAK HKLD HKNW</code>
             </div>
 
             <p>Use the applicable ICAO code whenever available as shown above, 
                 or the name of the airstrip where the ICAO code is not available.</p>
-            <div>
+            <div class="example">
                 <code>05:00 HKNW KALAMA OLARE HKJK</code><br><br>
             </div>
             
             <p>For Oldonyo Wuas, use OLDO</p>
-            <div>
+            <div class="example">
                 <code>11:00 HKNW OLDO KIMANA HKJK</code><br><br>
             </div>
 
             <p>Multiple aircraft: use an empty line to separate the routings of each aircraft as shown</p>
-            <div>
+            <div class="example">
                 <code>04:15 HKNW HKAM OLDO HKNW</code><br>
                 <code>07:20 HKNW HKLD HKSE HKNW</code><br>
                 <code>11:15 HKNW HKMS HKOK HKNW</code><br><br>
 
                 <code>05:00 HKNW HKAK HKLD HKMF HKMS HKKE HKNW</code><br>
-                <code>10:10 HKNW HTKJ HKNW</code><br><br>
+                <code>10:10 HKNW HTKJ HKNW</code><br>
 
                 <code>07:00 HKNW HKOD HKOY HKCC HKNW</code>
             </div>
 
             <p>Daystop: Enter the route upto the day stop point. Start the afternoon routing on a new line</p>
-            <div>
+            <div class="example">
                 <code>07:00 HKNW HKGE HKSJ HKMJ HKTB</code><br>
                 <code>12:15 HKTB HKOY HKKE HKNW</code>
             </div>
 
             <p>For DHC8 routes, with exception of the bush flights, use the following syntax</p>
-            <div>
+            <div class="example">
                 <code>043 HKNW HKMO HTZA HKMO HKNW</code><br>
                 <code>051 HKNW HKLU HKML HKNW</code><br><br>
 
                 <code>081 HKNW HKKI HKNW</code><br>
                 <code>053 HKNW HKUK HKNW</code><br>
-                <code>047 HKNW HTZA HKMO HKNW</code><br>
+                <code>047 HKNW HTZA HKMO HKNW</code><br><br>
             </div>
 
             <p>For DHC8 aircraft in bush flights, either fill the log manually or follow the C208 syntax and edit the timings</p>
@@ -73,8 +73,7 @@
                 <li>A new airfield that is still not recognized by the program. In this case, inform Wasike for actioning</li>
             </ul>
             
-            <p>In any case, the program will not execute if a route has an error. 
-                However you will see info on the error for correction. If necessary, remove that flight and then manually complete it later after download. 
+            <p>In any case, you will see info on the error for correction. If necessary, remove that flight and then manually complete it later after download. 
                 See examples below</p>
             
             <figure>
@@ -89,7 +88,7 @@
             
             <figure>
                 <img src="{{ url_for('static', filename='HELP/error3.png') }}" alt="error3">
-                <figcaption>Incorrect formatting of a route. <code>0500 HKNW HKSE HKKE HKNW</code></figcaption>
+                <figcaption>Incorrect formatting of a route. [0500 HKNW HKSE HKKE HKNW]</figcaption>
             </figure>
         </section>
 

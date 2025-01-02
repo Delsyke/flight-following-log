@@ -92,8 +92,7 @@ def write_to_excel(schedule, worksheet, row_num):
 				departure_time = dhc8_schedule[k][route].split()[t]
 			except KeyError:
 				msg = f"""
-				ATTENTION:
-				Unknown DHC8 route {k} {route}. Schedule not completed. 
+				Oooops! Unknown DHC8 route {k} {route}. Schedule not completed. 
 				Please correct or complete this section manually."""
 				abort(400, msg)
 				logging.error(msg)

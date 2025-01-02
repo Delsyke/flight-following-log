@@ -21,13 +21,14 @@ def get_c208_eet(dep, dest):
             eet = timings["C208"][dest.upper()][dep.upper()]
             return eet
         except KeyError:
-            msg = f'''
-            ATTENTION: 
-            Unknown C208 route {dep.upper()} - {dest.upper()}. Schedule not completed. 
+            msg = f''' 
+            Oooops! Unknown C208 route {dep.upper()} - {dest.upper()}. 
+            Schedule not completed.
             Please correct or complete this section manually.
             '''
-            abort(400, msg)
             logging.error(msg)
+            abort(400, msg)
+
 
 def get_dhc8_eet(dep, dest):
     """reads a json formatted time a dhc8 takes to fly between stations"""
@@ -44,12 +45,12 @@ def get_dhc8_eet(dep, dest):
             return eet
         except KeyError:
             msg = f'''
-            ATTENTION: 
-            Unknown DHC8 route {dep.upper()} - {dest.upper()}. Schedule not completed. 
-            Please correct complete this section manually.
+            Unknown DHC8 route {dep.upper()} - {dest.upper()}. 
+            Schedule not completed. 
+            Please correct or complete this section manually.
             '''
-            abort(400, msg)
             logging.error(msg)
+            abort(400, msg)
 
 
 def get_eta(departure_time, eet):

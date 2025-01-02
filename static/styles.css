@@ -41,10 +41,20 @@ textarea {
 }
 
 img {
+	width: 90%;
 	height: auto;
+	border: 2px solid black;
+	margin-top: 20px;
 }
 
 .form {
 	border: none;
 }
 
+.error-box {
+	font-size: 1.5em;
+}
+
+.example {
+	margin-bottom: 20px;
+}
